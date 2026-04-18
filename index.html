@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Number Generator — Free Online Tool | Pick a Random Number</title>
+  <meta name="description" content="Free random number generator. Pick a random number between any two values. Generate multiple numbers, no duplicates option, dice roller, and more.">
+  <meta name="keywords" content="random number generator, pick a random number, number randomizer, random number between 1 and 100, dice roller, random picker">
+  <link rel="canonical" href="https://randomnumber.quicktools.io">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Random Number Generator","description":"Free random number generator between any range","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <style>
+    :root{--bg:#0f1117;--bg2:#1a1d26;--bg3:#22263a;--border:#2a2f45;--accent:#4f8ef7;--green:#10b981;--red:#ef4444;--amber:#f59e0b;--purple:#8b5cf6;--text:#e2e8f0;--text-dim:#94a3b8;--white:#f8fafc;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;}
+    .topnav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;}
+    .nav-logo{font-size:16px;font-weight:700;color:var(--accent);text-decoration:none;}
+    .ad-banner{background:var(--bg2);border-bottom:1px solid var(--border);padding:8px;text-align:center;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:12px;}
+    .layout{display:grid;grid-template-columns:1fr 300px;gap:24px;max-width:1160px;margin:0 auto;padding:40px 24px;flex:1;}
+    @media(max-width:768px){.layout{grid-template-columns:1fr;}.ad-side{display:none;}}
+    .hero{text-align:center;margin-bottom:32px;}
+    .hero h1{font-size:clamp(26px,5vw,40px);font-weight:800;color:var(--white);margin-bottom:12px;letter-spacing:-1px;}
+    .hero p{font-size:16px;color:var(--text-dim);max-width:520px;margin:0 auto;line-height:1.6;}
+    .tool-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:32px;margin-bottom:20px;}
+    .tabs{display:flex;gap:4px;margin-bottom:28px;background:var(--bg3);padding:4px;border-radius:10px;}
+    .tab{flex:1;padding:10px;text-align:center;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;color:var(--text-dim);transition:all .15s;border:none;background:none;font-family:inherit;}
+    .tab.active{background:var(--accent);color:#fff;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .range-row{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:end;margin-bottom:24px;}
+    .range-row .sep{font-size:20px;color:var(--text-dim);padding-bottom:12px;text-align:center;}
+    .input-group label{display:block;font-size:12px;font-weight:700;color:var(--text-dim);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;}
+    input[type="number"],input[type="text"]{width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:12px 16px;border-radius:8px;font-size:18px;font-family:inherit;outline:none;transition:border-color .15s;text-align:center;}
+    input:focus{border-color:var(--accent);}
+    .big-result{text-align:center;margin:24px 0;}
+    .big-num{font-size:clamp(72px,15vw,120px);font-weight:900;color:var(--white);line-height:1;letter-spacing:-4px;transition:all .3s;cursor:pointer;}
+    .big-num:hover{color:var(--accent);}
+    .big-num.animate{animation:popIn .3s cubic-bezier(.4,0,.2,1);}
+    @keyframes popIn{0%{transform:scale(.7);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+    .big-label{font-size:14px;color:var(--text-dim);margin-top:8px;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:8px;border:none;font-size:15px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit;}
+    .btn-primary{background:var(--accent);color:#fff;width:100%;justify-content:center;font-size:18px;padding:16px;}
+    .btn-primary:hover{filter:brightness(1.1);transform:translateY(-1px);}
+    .btn-secondary{background:var(--bg3);color:var(--text);border:1px solid var(--border);}
+    .btn-secondary:hover{border-color:var(--accent);}
+    .btn-row{display:flex;gap:10px;margin-top:12px;}
+    .quick-btns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+    .quick-btn{padding:8px 16px;border-radius:20px;border:1px solid var(--border);background:var(--bg3);color:var(--text-dim);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit;}
+    .quick-btn:hover{border-color:var(--accent);color:var(--accent);}
+    .multi-results-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;justify-content:center;}
+    .num-chip{padding:8px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;font-size:16px;font-weight:700;color:var(--white);cursor:pointer;transition:all .15s;}
+    .num-chip:hover{border-color:var(--accent);}
+    .history-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);}
+    .history-num{padding:4px 10px;background:var(--bg3);border-radius:6px;font-size:13px;color:var(--text-dim);}
+    .history-num:first-child{color:var(--accent);font-weight:700;}
+    .dice-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
+    @media(max-width:500px){.dice-grid{grid-template-columns:repeat(3,1fr);}}
+    .die-btn{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:var(--bg3);border:2px solid var(--border);border-radius:12px;cursor:pointer;transition:all .15s;font-family:inherit;}
+    .die-btn:hover{border-color:var(--accent);transform:translateY(-2px);}
+    .die-btn.active{border-color:var(--accent);background:rgba(79,142,247,.1);}
+    .die-label{font-size:18px;font-weight:900;color:var(--white);}
+    .die-sub{font-size:11px;color:var(--text-dim);}
+    .dice-result{text-align:center;font-size:80px;font-weight:900;color:var(--white);margin:16px 0;line-height:1;}
+    .ad-mid{text-align:center;margin:20px 0;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px;min-height:100px;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:12px;}
+    .ad-side{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:12px;min-height:600px;display:flex;align-items:flex-start;justify-content:center;color:var(--text-dim);font-size:12px;}
+    .faq{margin-top:32px;}
+    .faq h2{font-size:20px;font-weight:700;color:var(--white);margin-bottom:16px;}
+    .faq-item{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-bottom:8px;}
+    .faq-q{font-weight:600;color:var(--white);margin-bottom:6px;}
+    .faq-a{color:var(--text-dim);font-size:14px;line-height:1.6;}
+    footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;text-align:center;color:var(--text-dim);font-size:13px;}
+    footer a{color:var(--text-dim);text-decoration:none;margin:0 8px;}
+    .toast{position:fixed;bottom:24px;right:24px;background:var(--green);color:#fff;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none;z-index:999;}
+    .toast.show{opacity:1;transform:translateY(0);}
+  </style>
+</head>
+<body>
+<nav class="topnav"><a href="/" class="nav-logo">⚡ QuickTools</a></nav>
+<div class="ad-banner">[Ad — 728x90]</div>
+<div class="layout">
+<main>
+  <div class="hero">
+    <h1>🎲 Random Number Generator</h1>
+    <p>Generate truly random numbers between any range. Single numbers, multiple picks, no-duplicates mode, and dice roller.</p>
+  </div>
+
+  <div class="tool-card">
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('single',this)">Single</button>
+      <button class="tab" onclick="showTab('multi',this)">Multiple</button>
+      <button class="tab" onclick="showTab('dice',this)">Dice</button>
+    </div>
+
+    <!-- SINGLE -->
+    <div class="tab-panel active" id="tab-single">
+      <div class="quick-btns">
+        <span style="font-size:12px;color:var(--text-dim);align-self:center;font-weight:600;">Quick:</span>
+        <button class="quick-btn" onclick="setRange(1,10)">1–10</button>
+        <button class="quick-btn" onclick="setRange(1,100)">1–100</button>
+        <button class="quick-btn" onclick="setRange(1,1000)">1–1000</button>
+        <button class="quick-btn" onclick="setRange(0,1)">0 or 1</button>
+        <button class="quick-btn" onclick="setRange(1,6)">1–6 (die)</button>
+        <button class="quick-btn" onclick="setRange(1,52)">Card (1–52)</button>
+      </div>
+      <div class="range-row">
+        <div class="input-group"><label>Min</label><input type="number" id="s-min" value="1"></div>
+        <div class="sep">to</div>
+        <div class="input-group"><label>Max</label><input type="number" id="s-max" value="100"></div>
+      </div>
+      <div class="big-result">
+        <div class="big-num" id="big-num" onclick="generateSingle()">?</div>
+        <div class="big-label" id="big-label">Click to generate</div>
+      </div>
+      <button class="btn btn-primary" onclick="generateSingle()">🎲 Generate Number</button>
+      <div class="history-row" id="single-history"></div>
+    </div>
+
+    <!-- MULTI -->
+    <div class="tab-panel" id="tab-multi">
+      <div class="range-row">
+        <div class="input-group"><label>Min</label><input type="number" id="m-min" value="1"></div>
+        <div class="sep">to</div>
+        <div class="input-group"><label>Max</label><input type="number" id="m-max" value="100"></div>
+      </div>
+      <div class="range-row">
+        <div class="input-group"><label>How Many</label><input type="number" id="m-count" value="10" min="1" max="1000"></div>
+        <div class="sep"></div>
+        <div class="input-group">
+          <label>Duplicates</label>
+          <select id="m-dupes" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:12px 16px;border-radius:8px;font-size:15px;font-family:inherit;outline:none;width:100%;">
+            <option value="yes">Allowed</option>
+            <option value="no">Not Allowed</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="generateMulti()">🎲 Generate Numbers</button>
+      <div class="multi-results-grid" id="multi-results"></div>
+    </div>
+
+    <!-- DICE -->
+    <div class="tab-panel" id="tab-dice">
+      <div class="dice-grid">
+        <button class="die-btn active" onclick="selectDie(4,this)"><div class="die-label">D4</div><div class="die-sub">1–4</div></button>
+        <button class="die-btn" onclick="selectDie(6,this)"><div class="die-label">D6</div><div class="die-sub">1–6</div></button>
+        <button class="die-btn" onclick="selectDie(8,this)"><div class="die-label">D8</div><div class="die-sub">1–8</div></button>
+        <button class="die-btn" onclick="selectDie(10,this)"><div class="die-label">D10</div><div class="die-sub">1–10</div></button>
+        <button class="die-btn" onclick="selectDie(12,this)"><div class="die-label">D12</div><div class="die-sub">1–12</div></button>
+        <button class="die-btn" onclick="selectDie(20,this)"><div class="die-label">D20</div><div class="die-sub">1–20</div></button>
+        <button class="die-btn" onclick="selectDie(100,this)"><div class="die-label">D100</div><div class="die-sub">1–100</div></button>
+        <button class="die-btn" onclick="selectDie(0,this)"><div class="die-label">2D6</div><div class="die-sub">2–12</div></button>
+      </div>
+      <div class="dice-result" id="dice-result">?</div>
+      <div style="text-align:center">
+        <button class="btn btn-primary" style="width:auto;" onclick="rollDice()">🎲 Roll Dice</button>
+      </div>
+      <div class="history-row" id="dice-history"></div>
+    </div>
+  </div>
+
+  <div class="ad-mid">[Ad — 728x90]</div>
+
+  <div class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item"><div class="faq-q">How random is this number generator?</div><div class="faq-a">This tool uses JavaScript's Math.random() which generates pseudorandom numbers based on a seed derived from system entropy. It is statistically random enough for games, giveaways, and everyday decisions but is not suitable for cryptographic security purposes.</div></div>
+    <div class="faq-item"><div class="faq-q">Can I generate numbers without duplicates?</div><div class="faq-a">Yes. In the Multiple tab, select "Not Allowed" in the Duplicates dropdown. The tool will ensure each generated number is unique within the range you specify.</div></div>
+    <div class="faq-item"><div class="faq-q">What is the maximum range I can use?</div><div class="faq-a">You can use any integer range from negative numbers to very large positive numbers. For the "no duplicates" mode, the range must be large enough to accommodate the number of values you request.</div></div>
+    <div class="faq-item"><div class="faq-q">What dice are available in the dice roller?</div><div class="faq-a">We support D4, D6, D8, D10, D12, D20, D100 (percentile dice), and 2D6 (two six-sided dice). These cover all standard tabletop RPG dice used in games like Dungeons & Dragons.</div></div>
+    <div class="faq-item"><div class="faq-q">Can I use this for a giveaway or raffle?</div><div class="faq-a">Yes. Enter 1 as the minimum and the number of participants as the maximum. Click generate to pick a winner. Use "no duplicates" mode when picking multiple winners.</div></div>
+  </div>
+</main>
+<aside class="ad-side">[Ad — 300x600]</aside>
+</div>
+<footer>© 2025 QuickTools — Free Online Utilities<br><div style="margin-top:8px;"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/tools">All Tools</a></div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+let singleHistory=[], diceHistory=[], selectedDie=4;
+
+function showTab(name, btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+
+function setRange(min,max){
+  document.getElementById('s-min').value=min;
+  document.getElementById('s-max').value=max;
+  generateSingle();
+}
+
+function randInt(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
+
+function generateSingle(){
+  const min=parseInt(document.getElementById('s-min').value)||1;
+  const max=parseInt(document.getElementById('s-max').value)||100;
+  if(min>max){ showToast('Min must be less than Max'); return; }
+  const num=randInt(min,max);
+  const el=document.getElementById('big-num');
+  el.textContent=num;
+  el.classList.remove('animate');
+  void el.offsetWidth;
+  el.classList.add('animate');
+  document.getElementById('big-label').textContent=`Between ${min} and ${max}`;
+  singleHistory.unshift(num);
+  if(singleHistory.length>15) singleHistory.pop();
+  document.getElementById('single-history').innerHTML=
+    singleHistory.map((n,i)=>`<span class="history-num" onclick="copyText('${n}')">${n}</span>`).join('');
+}
+
+function generateMulti(){
+  const min=parseInt(document.getElementById('m-min').value)||1;
+  const max=parseInt(document.getElementById('m-max').value)||100;
+  const count=Math.min(1000,Math.max(1,parseInt(document.getElementById('m-count').value)||10));
+  const noDupes=document.getElementById('m-dupes').value==='no';
+  if(min>max){ showToast('Min must be less than Max'); return; }
+  if(noDupes && count>(max-min+1)){ showToast(`Can't generate ${count} unique numbers in that range`); return; }
+  const results=[];
+  if(noDupes){
+    const pool=[];
+    for(let i=min;i<=max;i++) pool.push(i);
+    for(let i=pool.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]; }
+    for(let i=0;i<count;i++) results.push(pool[i]);
+  } else {
+    for(let i=0;i<count;i++) results.push(randInt(min,max));
+  }
+  document.getElementById('multi-results').innerHTML=
+    results.map(n=>`<div class="num-chip" onclick="copyText('${n}')">${n}</div>`).join('');
+}
+
+function selectDie(sides,btn){
+  selectedDie=sides;
+  document.querySelectorAll('.die-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  rollDice();
+}
+
+function rollDice(){
+  let result;
+  if(selectedDie===0){ result=randInt(1,6)+randInt(1,6); }
+  else { result=randInt(1,selectedDie); }
+  const el=document.getElementById('dice-result');
+  el.textContent=result;
+  el.style.color=result===(selectedDie===0?12:selectedDie)?'#10b981':result===1?'#ef4444':'var(--white)';
+  diceHistory.unshift(result);
+  if(diceHistory.length>15) diceHistory.pop();
+  document.getElementById('dice-history').innerHTML=
+    diceHistory.map(n=>`<span class="history-num">${n}</span>`).join('');
+}
+
+function copyText(t){
+  navigator.clipboard.writeText(String(t)).then(()=>showToast('Copied: '+t));
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2000);
+}
+
+document.addEventListener('keydown',e=>{ if(e.code==='Space'&&document.getElementById('tab-single').classList.contains('active')){e.preventDefault();generateSingle();} });
+</script>
+</body>
+</html>
